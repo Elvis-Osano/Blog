@@ -1,6 +1,6 @@
 from django.urls import path
 from SocialMedia import views
-from .views import Viewscount
+
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -16,6 +16,6 @@ urlpatterns = [
     path('deletepost/<int:id>', views.delete_post, name='deletepost'),
     path('favourites/<int:id>', views.favourite_post, name='favouritepost'),
     path('favourites/', views.favourite_posts_list, name='favourites'),
-    path('<int:id>/<slug>', Viewscount.as_view(), name='details'),
+  
 
 ]

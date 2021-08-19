@@ -27,7 +27,7 @@ SECRET_KEY = 'x)mo0-mm3bqz@8eg$$$(u(51w9%8x!yo1%5qaflh5ofqjoik@@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'author', 'SocialMedia', 'social_django',
+    'author', 'SocialMedia.apps.SocialmediaConfig', 'social_django',
 ]
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.github.GithubOAuth2',
@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'author.middlewares.AuthorDefaultBackendMiddleware', 'social_django.middleware.SocialAuthExceptionMiddleware'
+    'author.middlewares.AuthorDefaultBackendMiddleware', 'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'Blog.urls'
@@ -88,14 +88,20 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'posts',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'posts',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
@@ -147,3 +153,4 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'UtwZIiRAtPUxKc1MA23KTN8S'
 
 SOCIAL_AUTH_GITHUB_KEY = '273a67d5d055981b08c5'
 SOCIAL_AUTH_GITHUB_SECRET = 'bda11fca67be3a0c8704ad1797acecda27a667bb'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
